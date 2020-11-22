@@ -8,13 +8,19 @@ characters = {
     "Defender":
     {
         "HP":150,
-        "attack":5,
+        "attack":7,
         "defence":12
     },
     "Mag":
     {
         "HP":70,
-        "attack":15,
+        "attack":17,
         "defence":5
+    },
+    "Bowman":
+    {
+        "HP":90,
+        "attack":15,
+        "defence":6
     }
 }

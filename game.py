@@ -75,15 +75,18 @@ User                                    Mob
         self.gameAction = int(input("Insert game action "))
 
         # start loop
-        while self.gameAction or (self.mob.currentHp <= 0 or self.char.currentHp <= 0):
+        while self.mob.currentHp > 0 and self.char.currentHp > 0:
             # clean screen
             self.scrUpd()
             # print information
             self.printCharsInfo()
             # attack
-            if self.gameAction == 1:
+            if self.gameAction == 0:
+                break
+            elif self.gameAction == 1:
                 actions.attack(self.char, self.mob)
                 actions.attack(self.mob, self.char)
+
             self.gameAction = int(input("Insert game action "))
             
 
