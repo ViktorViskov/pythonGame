@@ -1,7 +1,9 @@
-# import class afor creating char
-from createCharacter import CreateCharacter
+# import utils
+import utils
 # import system comands
 import os
+#import actions
+import actions
 
 # define game engine
 class Game:
@@ -23,11 +25,11 @@ class Game:
         os.system("clear")
         charName = input("Insert character name ")
         charType = input("Insert character type ")
-        self.char = CreateCharacter(charName,charType)
+        self.char = utils.createCharacter(charName,charType)
     
     # creating mob
     def initMobChar(self):
-        self.mob = CreateCharacter("Orc","Defender")
+        self.mob = utils.createCharacter("Dark Elf","Mag")
 
     # print game controls
     def printControlInfo(self):
@@ -48,8 +50,8 @@ class Game:
 
     # print information about characters
     def printCharsInfo(self):
-        userData = self.char.createdCharacter
-        mobData = self.char.createdCharacter
+        userData = self.char
+        mobData = self.char
         formatString = '''
 User                                    Mob
 %s                                      %s
@@ -65,19 +67,23 @@ User                                    Mob
 
     # start game
     def startGame(self):
+        # testing action 
+        # init action
+        actions.attack(self.mob, self.char)
+
         # take game action befor loop
         self.gameAction = int(input("Insert game action "))
 
         # start loop
-        while self.gameAction or (self.mob.createdCharacter.currentHp <= 0 or self.char.createdCharacter.currentHp <= 0):
+        while self.gameAction or (self.mob.currentHp <= 0 or self.char.currentHp <= 0):
             # clean screen
             self.scrUpd()
             # print information
             self.printCharsInfo()
             # attack
             if self.gameAction == 1:
-                self.char.createdCharacter.actionAttack(self.mob.createdCharacter)
-                self.mob.createdCharacter.actionAttack(self.char.createdCharacter)
+                actions.attack(self.char, self.mob)
+                actions.attack(self.mob, self.char)
             self.gameAction = int(input("Insert game action "))
             
 

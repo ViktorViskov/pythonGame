@@ -1,0 +1,20 @@
+characters = {
+    "Fighter":
+    {
+        "HP":100,
+        "attack":10,
+        "defence":7
+    },
+    "Defender":
+    {
+        "HP":150,
+        "attack":5,
+        "defence":12
+    },
+    "Mag":
+    {
+        "HP":70,
+        "attack":15,
+        "defence":5
+    }
+}
