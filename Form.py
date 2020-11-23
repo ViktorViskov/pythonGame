@@ -95,11 +95,25 @@ class Form:
         print(self.stringToPrint)
     
     # set data in form
-    def setInForm(self, inRow, fromItem, value):
-        for itemNum in range(len(value)):
-            self.tdArray[inRow][fromItem + itemNum] = value[itemNum]
+    def setInForm(self, fistOtion, fistValue, secondOption, secondValue, value):
 
-someData = Form()
-someData.setInForm(2,10,"Loshara")
-someData.setInForm(2,50,"This is cool")
-someData.printForm()
+        # define base variables
+        row = 0
+        elementNumber = 0
+
+        # define fist option
+        if fistOtion.lower() == "top":
+            row += fistValue
+        
+        elif fistOtion.lower() == "bottom":
+            row = self.formHeight - fistValue - 1
+        
+        # define second option
+        if secondOption.lower() == "left":
+            elementNumber += secondValue
+        elif secondOption.lower() == "right":
+            elementNumber = self.formWidth - secondValue - len(value)
+
+        for itemNum in range(len(value)):
+            self.tdArray[row][elementNumber + itemNum] = value[itemNum]
+
