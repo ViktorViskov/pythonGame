@@ -51,6 +51,4 @@ def updateBoosts(char):
 # creating char
 def createCharacter(name, type):
     # create character
-    return Character(name,characters[type]["HP"],characters[type]["attack"],characters[type]["defence"])
-
-
+    return Character(name,type ,characters[type]["HP"],characters[type]["attack"],characters[type]["defence"])

@@ -4,10 +4,13 @@ from math import floor
 class Character:
     
     # inicilized class
-    def __init__(self, name, hp, attack, defence):
+    def __init__(self, name, charType, hp, attack, defence):
 
         # character name
         self.name = name
+
+        # character type
+        self.type = charType
 
         # character lvl and percent for next lvl
         self.lvl = 1

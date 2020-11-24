@@ -94,26 +94,79 @@ class Form:
         # print string
         print(self.stringToPrint)
     
-    # set data in form
-    def setInForm(self, fistOtion, fistValue, secondOption, secondValue, value):
+    # set data in form (from left posX must be positive, from right negative, top posY positive, bottom posY negative, center element in center)
+    def setInForm(self, strToPrint, *optionsArr):
 
-        # define base variables
-        row = 0
-        elementNumber = 0
+        # define position variables
+        position = self.defPosition(optionsArr, len(strToPrint))
 
-        # define fist option
-        if fistOtion.lower() == "top":
-            row += fistValue
+        # inset string in position
+        for symbNum in range(len(strToPrint)):
+            self.tdArray[position[1]][position[0] + symbNum] = strToPrint[symbNum]
+    
+    # 
+    # Base utils
+    # 
+
+    # define option from array and return position
+    def defPosition(self ,optionsArr ,sizeOfString = 0):
+        position = [0,0]
+
+        # start loop for define position
+        for option in optionsArr:
+            # convert string to arr
+            convertedArr = option.split(":")
+
+            # defining position
+
+            # if x (horizontal)
+            if convertedArr[0] == "x":
+
+                # defining value
+
+                # if center
+                if convertedArr[1] == "center":
+                    position[0] = int((self.formWidth) / 2 - (sizeOfString / 2))
+                    # next iteration
+                    continue
+
+                # if value >= 0 element must stay in left side
+                elif int(convertedArr[1]) >= 0:
+                    position[0] = int(convertedArr[1])
+                    # next iteration
+                    continue
+                
+                # if value < 0 element must stay in right side
+                elif int(convertedArr[1]) < 0:
+                    position[0] = self.formWidth + int(convertedArr[1]) - sizeOfString
+                    # next iteration
+                    continue
+                else:
+                    print("Incorect input in defPosition in convertedArr[1]")
+            
+            # if all another values but not x (Dy default y)
+            else:
+
+                # if center
+                if convertedArr[1] == "center":
+                    position[1] = int((self.formHeight) / 2)
+                    # next iteration
+                    continue
+
+                # if value >= 0 element must stay in top
+                elif int(convertedArr[1]) >= 0:
+                    position[1] = int(convertedArr[1])
+                    # next iteration
+                    continue
+                
+                # if value < 0 element must stay in bottom
+                elif int(convertedArr[1]) < 0:
+                    position[1] = self.formHeight + int(convertedArr[1])
+                    # next iteration
+                    continue
+                else:
+                    print("Incorect input in defPosition in convertedArr[1]")
         
-        elif fistOtion.lower() == "bottom":
-            row = self.formHeight - fistValue - 1
-        
-        # define second option
-        if secondOption.lower() == "left":
-            elementNumber += secondValue
-        elif secondOption.lower() == "right":
-            elementNumber = self.formWidth - secondValue - len(value)
-
-        for itemNum in range(len(value)):
-            self.tdArray[row][elementNumber + itemNum] = value[itemNum]
+        # return position array
+        return position
 

@@ -1,26 +1,30 @@
 characters = {
     "Fighter":
     {
+        "name":"Fighter",
         "HP":100,
-        "attack":10,
-        "defence":7
+        "attack":5,
+        "defence":10
     },
     "Defender":
     {
-        "HP":150,
-        "attack":7,
-        "defence":12
+        "name":"Defender",
+        "HP":140,
+        "attack":3,
+        "defence":15
     },
     "Mag":
     {
-        "HP":70,
-        "attack":17,
-        "defence":5
+        "name":"Mag",
+        "HP":80,
+        "attack":9,
+        "defence":6
     },
     "Bowman":
     {
-        "HP":90,
-        "attack":15,
-        "defence":6
+        "name":"Bowman",
+        "HP":100,
+        "attack":7,
+        "defence":7
     }
 }
